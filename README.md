@@ -4,6 +4,10 @@ This tool is a proof-of-concept userland tool for doing compaction of files agai
 
 This file system is applied only to those MacOS systems that have upgraded to High Sierra and have a SSD drive as their boot drive. Additionally, older HFS+ drives can be manually converted to APFS using the built-in Disk Utility tool.
 
+## Use cases
+
+Suppose you have many potential duplicate files dispersed through various folders and want to exploit the APFS to save disk space. Using this tool will identify all the files that are dupes, re-copy these files therefore exploiting the features of the APFS and preserve the original logical source folder including the names.
+
 ## Motivation
 
 The APFS has a few innovations around saving disk space by implementing copy-on-write, and smarter meta-data linking when it comes to file creation and copy operations.  Currently, when a drive is converted from HFS+ to APFS, there is no concept of deduplication on any existing files.  The magic happens however when files are copied. APFS, is smart enough to understand when to make logical vs physical copies of data. Additionally, it's smart enough to implement a delta copy strategy much like a Git repo does when differences are made to files.
